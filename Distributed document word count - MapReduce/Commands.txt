@@ -1,0 +1,27 @@
+hdfs dfs -ls /Data/10_copies
+---------------------------------
+hdfs fsck /Data/300m.txt -files -blocks -locations
+--------------------------------------------------
+hadoop jar hadoop-streaming-2.7.3.jar \
+-input /Data/10_copies/*.txt \
+-output /outputs/10_copies \
+-mapper mapper.py \
+-reducer reducer.py
+
+-----------------------------------------------------
+hadoop jar hadoop-streaming-2.7.3.jar \
+-input /Data/300M.txt \
+-output /outputs/300M \
+-mapper mapper.py \
+-reducer reducer.py
+
+-----------------------------------------------------
+hadoop jar hadoop-streaming-2.7.3.jar \
+-input /Data/300M.txt \
+-output /outputs/300M_modified_num_mapreduce \
+-mapper mapper.py \
+-reducer reducer.py \
+-numReduceTasks 3
+
+-D mapred.map.tasks=8 \
+-D mapred.reduce.tasks=2

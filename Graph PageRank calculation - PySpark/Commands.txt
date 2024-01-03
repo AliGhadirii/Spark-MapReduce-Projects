@@ -1,0 +1,18 @@
+Our pagerank code can be run on the cluster you gave us.
+
+No extra library is needed to run the code.
+input data is located on the hdfs as well as the server itself.
+
+command to run the code when we are at /home/hadoop/CC_HW/spark:
+
+=========================================================================
+Usage: spark-submit pagerank.py <input_path> <output_path> <iterations>
+=========================================================================
+
+For example:
+
+/home/hadoop/spark/spark-3.3.1-bin-hadoop3/bin/spark-submit Pagerank.py \
+"hdfs://master:9000/input_spark/youtube.graph.large" \
+"hdfs://master:9000/outputs/pagerank3" \
+10
+
